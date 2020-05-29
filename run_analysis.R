@@ -6,8 +6,8 @@
  
 # Extraction of only the measurements on the mean and standard deviation for each measurement.
 
-activityLabels <- read.table("./UCIHARDataset/activity_labels.txt")
-features <- read.table("./UCIHARDataset/features.txt")
+activityLabels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+features <- read.table("./UCI HAR Dataset/features.txt")
  
 meanAndStandarFeatures <- grep(".*mean.*|.*std.*",features[,2])
 meanAndStandarFeatures.names <- features[meanAndStandarFeatures,2]
@@ -16,16 +16,16 @@ meanAndStandarFeatures.names <- features[meanAndStandarFeatures,2]
 
 # Merge of the training and test sets to create one data set.
 
-train <- read.table("./UCIHARDataset/train/X_train.txt")[meanAndStandarFeatures]
-trainActivities <- read.table("./UCIHARDataset/train/Y_train.txt")
-trainSubjects <- read.table("./UCIHARDataset/train/subject_train.txt")
+train <- read.table("./UCI HAR Dataset/train/X_train.txt")[meanAndStandarFeatures]
+trainActivities <- read.table("./UCI HAR Dataset/train/Y_train.txt")
+trainSubjects <- read.table("./UCI HAR Dataset/train/subject_train.txt")
  
 train <- cbind(trainSubjects, trainActivities, train)
 
 
-test <- read.table("./UCIHARDataset/test/X_test.txt")[meanAndStandarFeatures]
-testActivities <- read.table("./UCIHARDataset/test/Y_test.txt")
-testSubjects <- read.table("./UCIHARDataset/test/subject_test.txt")
+test <- read.table("./UCI HAR Dataset/test/X_test.txt")[meanAndStandarFeatures]
+testActivities <- read.table("./UCI HAR Dataset/test/Y_test.txt")
+testSubjects <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 
 test <- cbind(testSubjects, testActivities, test)
 
